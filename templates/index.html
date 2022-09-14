@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="static/name.ico" type="image/ico">
+    <title>Anime Recommendation system</title>
+    <div id="player">
+      <audio autoplay hidden controls loop id="myaudio">
+        <source src="static/itachii.mp3" type="audio/mpeg">
+                  If you're reading this, audio isn't supported. 
+      </audio>
+  </div>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body style="background-image:url('static/itachi.jpg'); height: 100%; background-position: center; background-repeat: no-repeat;  background-attachment: fixed; background-size: cover">
+    <div class="login">
+      <div class="loading-overlay">
+        <center> <h2 style="color:black;">Loading..</h2>
+        <span class="fa fa-spinner fa-3x fa-spin" ></span></center>
+      </div>
+      <form method="POST" id="form" action="{{url_for('recommend')}}">
+        <h1>Anime Recommendation System</h1>
+        <div id="suggest" class="wrapper">
+          <div class="search-input">
+          <input type="text", name="anime" value=""  id="input"  autocomplete="off" placeholder="Enter Anime Name" />
+          <div class="autocom-box" style="font-size:120%; width:100%; background-color: red; height:100px;"> </div>
+          <div class="icon" id="suggestions">
+          </div>
+          </div>
+        </div>
+          <div id="main1">
+            <input class="button" type="submit" id="btn1" value="Click" >
+          </div>
+      </form>
+        <div class="main" style="margin-top:399px;">
+          <table>
+            <tr>
+              <td>
+                <div class="figure">
+                  <img src="{{ main_poster }}" alt="{{ main_name }}" style="width:320px;">
+                  <span class="span1"></span>
+                  <span class="span2"></span>
+                </div>
+                <!-- trailor button -->
+                <div class="content">
+                  <a href="#videostory" class="trailor more"   onclick="pauseAudio()" data-toggle="modal" data-target="#myModal"> watch trailer
+                      <i class="fa fa-play-circle" aria-hidden="true">&nbsp; </i>
+                  </a> 
+                </div>
+                <!-- new player########################## -->
+                <div id="myModal" class="modal fade" role="dialog" >
+                  <div class="modal-dialog" style="width:57%; background-color: red; border-radius:5%;">
+                
+                    <div class="modal-content" style=" border-radius:5%; background:linear-gradient(45deg, rgb(150, 112, 112) 0%, rgb(255, 0, 0) 100%);">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center><h2 class="modal-title" style="font-size: 170%;">Watching trailer</h2></center>
+                      </div>
+                      <div class="modal-body" style=" background:linear-gradient(45deg, rgb(150, 112, 112) 0%, rgb(255, 0, 0) 100%);">
+                        <iframe width="680" height="380" src="{{ link }}" frameborder="0" allowfullscreen ></iframe>
+                      </div>
+                      <div class="modal-footer" style="border-radius:10%; background:linear-gradient(45deg, rgb(255, 0, 0) 0%, rgb(141, 80, 80) 100%);">
+                        <center><button type="button" class="btn btn-default" onclick="playAudio()" data-dismiss="modal" style="background-color:black; color: aliceblue;">Close</button></center>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
+                <!-- End nsjjsj$##$$$$$$$$$$$$$$$$$$ -->
+              </td>
+              
+              <td>
+                <h3 style="height:100px; padding: 20px; color: rgb(251, 251, 251); margin-block-start:22%; font-size:50px; font-family: Verdana, Geneva, Tahoma, sans-serif;"><a class="button2 b-pink rot-135">{{ main_name }}</a></h3>
+                  <h2 style="height:90px; padding: 20px; color: rgb(255, 255, 255);margin-top:8%; "><a class="button2 b-red rot-135">score </a> :<em > <a class="button1 b-red">{{ score }}</a></em> </h2>
+                  <h2 style="height:90px; padding: 20px; color: rgb(255, 255, 255);" ><a class="button2 b-red rot-135">Genre </a> :<em > <a class="button1 b-red" >{{ genre }}</a></em> </h2>
+                  <h2 style="height:90px; padding: 20px; color: rgb(255, 255, 255); margin-top:5%;"><a class="button2 b-red rot-135">Date </a> :<em> <a class="button1 b-red">{{ aired }} </a></em> </h2>
+                  <h2 style="height:60px; padding: 20px; color: rgb(255, 255, 255)"><a class="button2 b-red rot-135"> Synopsis </a> : </h2>
+                  <h3 class="ex3" style="padding:1px 0px; margin-left:17%; height:200px;  width:80%;  overflow: auto;"> <em class="button1 b-red"> {{ synopsis }} </em> </h3>
+              </td>
+            </tr>
+          </table>
+      
+          
+          <hr style="background-color:black">
+          <center><h2 style="color:White; font-weight: bold;"> Recommendations</h2></center>
+        <div class="row" style="margin-top:15px;" ><hr>
+          <div class="col-md-3" style="width:300px; border:none;">
+              <a href="https://9anime.vc/search?keyword={{ anime_name1 }}" >
+                <img src="{{ poster_url1 }}" alt="{{ anime_name1 }}" style="height: 420px; width:300px;  border-radius:20px;">
+                  <div class="caption">
+                    <h2> weebs Alert</h2>
+                    <p> Click and  go to website  for watch this anime  </p>
+                  </div>
+                  </a>
+                  <h3>{{ anime_name1 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px; ">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name2 }}" target="_blank">
+                  <img src="{{ poster_url2 }}" alt="{{ anime_name2 }}" style="height: 420px; width:300px; padding-left:10px; border-radius:20px;">
+                  <div class="caption">
+                    <h2> weebs Alert</h2>
+                    <p> Click and  go to website  for watch this anime</p>
+                  </div>
+                  </a>
+                  <h3>{{ anime_name2 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name3 }}" target="_blank">
+                  <img src="{{ poster_url3 }}" alt="{{ anime_name3 }}" style="height: 420px; width:300px;  padding-left:10px; border-radius:20px;">
+                  <div class="caption">
+                    <h2> weebs Alert</h2>
+                    <p> Click and  go to website  for watch this anime </p>
+                  </div>
+                  </a>
+                  <h3>{{ anime_name3 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name4 }}" target="_blank">
+                    <img src="{{ poster_url4 }}" alt="{{ anime_name4 }}" style="height: 420px; width:300px; padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2> weebs Alert</h2>
+                    <p> Click and  go to website  for watch this anime </p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name4 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name5 }}" target="_blank">
+                    <img src="{{ poster_url5 }}" alt="{{ anime_name5 }}" style="height: 420px; width:300px; padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2> weebs Alert</h2>
+                    <p> Click and  go to website  for watch this anime </p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name5 }}</h3>
+                </div>
+        </div><hr>
+        <div class="row" style="margin-top:15px;" >
+                <div class="col-md-3" style="width:300px;margin-top:70px">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name6 }}" target="_blank">
+                    <img src="{{ poster_url6 }}" alt="{{ anime_name6 }}" style="height: 420px; width:300px; padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2> Otaku Alert</h2>
+                      <p>Click and  go to website  for watch this anime</p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name6 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;margin-top:70px">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name7 }}" target="_blank">
+                    <img src="{{ poster_url7 }}" alt="{{ anime_name7 }}" style="height: 420px; width:300px;  padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2>Otaku Alert</h2>
+                      <p>Click and  go to website  for watch this anime</p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name7 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;margin-top:70px">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name8 }}" target="_blank">
+                    <img src="{{ poster_url8 }}" alt="{{ anime_name8 }}" style="height: 420px; width:300px;  padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2>Otaku Alert</h2>
+                      <p>Click and  go to website  for watch this anime</p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name8 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;margin-top:70px">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name9 }}" target="_blank">
+                    <img src="{{ poster_url9 }}" alt="{{ anime_name9 }}" style="height: 420px; width:300px;  padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                      <h2>Otaku Alert</h2>
+                      <p>Click and  go to website  for watch this anime</p>
+                    </div>
+                  </a>
+                  <h3>{{ anime_name9 }}</h3>
+                </div>
+                <div class="col-md-3" style="width:300px;margin-top:70px">
+                  <a href="https://9anime.vc/search?keyword={{ anime_name10 }}" target="_blank">
+                    <img src="{{ poster_url10 }}" alt="{{ anime_name10 }}" style="height: 420px; width:300px;  padding-left:10px; border-radius:20px;">
+                    <div class="caption">
+                    <h2>Otaku Alert</h2>
+                    <p>Click and  go to website  for watch this anime</p>
+                  </div>
+                </a>
+                <h3>{{ anime_name10 }}</h3>
+              </div>
+        </div><hr>
+        <div>
+          <table style="width:100%; border:1px solid black;">
+            <tr>
+              <th style="border:1px solid rgb(255, 255, 255);"> <h2 style="color:rgb(255, 251, 251); font-weight: bold;"> <center> Comments</center></h2></th>
+            </tr>
+            <tr>
+              <td style="border:1px solid rgb(244, 244, 244);"><h3 style="color:rgb(255, 251, 4)">{{ comment1 }}...Etc..</h3><a href="https://myanimelist.net/anime/{{ uid }}">READ MORE</a> </td>
+          
+            </tr>
+            <tr>
+              <td style="border:1px solid rgb(255, 255, 255);"><h3 style="color:rgb(255, 251, 4)">{{ comment2 }}...Etc..</h3><a href="https://myanimelist.net/anime/{{ uid }}">READ MORE</a></td>
+            </tr>
+            <tr>
+              <td style="border:1px solid rgb(255, 255, 255);"><h3 style="color:rgb(171, 89, 34)" >{{ comment3 }}...Etc..</h3><a href="https://myanimelist.net/anime/{{ uid }}">READ MORE</a></td>
+            </tr>
+          </table>
+        </div>
+        <div class="social-container">
+          <ul class="social-icons">
+            <li><a href="https://www.instagram.com/u_v_saifi/"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/uvais-saifi-187150236/"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/Uvais5"><i class="fa fa-github"></i></a></li>
+          </ul>
+        </div>
+       
+      </div>
+    </div>
+
+    
+    <script type="text/javascript">
+    let aniname = {{suggestions|tojson}};
+    var x = document.getElementById("myaudio");
+    function playAudio() { 
+      x.play(); 
+    }
+    function pauseAudio() { 
+      x.pause();
+    }  
+
+    $(document).ready(function() {
+      $('.youtube-video').magnificPopup({
+        type: 'iframe'
+      });
+    });
+    //  for loader
+    let overlay = document.getElementsByClassName('loading-overlay')[0]
+      document.getElementById('btn1')
+      .addEventListener('click', e => overlay.classList.toggle('is-active'))
+      // player video
+    var videoSrc = $("#myModal iframe").attr("src");
+    $('#myModal').on('show.bs.modal', function () { // on opening the modal
+    $("#myModal iframe").attr("src", videoSrc+"?autoplay=1");
+    }).on('hidden.bs.modal', function (e) { // on closing the modal
+    $("#myModal iframe").attr("src", null);
+  });
+      
+
+
+      </script>
+      <style>
+        .col-md-3 .caption{
+          background: rgb(0, 0, 0);
+        }
+        h2{
+          color: aliceblue;
+        }
+      
+      </style>
+      
+       <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+  </body>
+</html>
