@@ -12,6 +12,7 @@ The Anime Recommendation System is a machine learning-powered web app that helps
 ## youtube Video
 
 https://youtu.be/kZP5kroO56Q?si=IAgaUtPpsjqIgkni
-https://anime-recommendation-system01.herokuapp.com/
+
+
 ![Screenshot](anime_recommendation_system.png)
 
