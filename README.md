@@ -47,9 +47,10 @@ The Anime Recommendation System is a machine learning-powered web app that helps
 
 ## YouTube Video
 
-Check out this video for more details on building a content-based anime recommender system:
-
-[Build an Content Based Anime Recommender System](http://www.youtube.com/watch?v=XKYLPc-wEyc) by Data Science Solutions
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <p>Build an Content Based Anime Recommender System by Data Science Solutions</p>
+</div>
 
 ## Project Repository
 
@@ -66,37 +67,4 @@ To get a local copy up and running, follow these simple steps.
 * Python 3.x
 * pip (Python package installer)
 
-### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Uvais5/Anime_Recommendation_System.git](https://github.com/Uvais5/Anime_Recommendation_System.git)
-    ```
-2.  **Navigate to the project directory:**
-    ```bash
-    cd Anime_Recommendation_System
-    ```
-3.  **Create a virtual environment (recommended):**
-    ```bash
-    python -m venv venv
-    ```
-4.  **Activate the virtual environment:**
-    * **Windows:**
-        ```bash
-        .\venv\Scripts\activate
-        ```
-    * **macOS/Linux:**
-        ```bash
-        source venv/bin/activate
-        ```
-5.  **Install the required dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-### Usage
-
-To run the Flask web application locally:
-
-```bash
-python app.py # Or your main Flask application file
+###
