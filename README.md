@@ -5,7 +5,7 @@
 
 ## Web Application Preview
 
-![Anime Recommendation System](anime_recommendation_system.png)
+![Anime Recommendation System](anime_recommendation_system.png)  
 *A glimpse of the web application's user interface.*
 
 ---
@@ -41,26 +41,30 @@ The Anime Recommendation System is a machine learning-powered web app that helps
 
 ## Who is this for?
 
-* ✅ Anime fans looking for their next watchlist
-* ✅ Developers & data scientists exploring recommendation systems
-* ✅ Machine learning & Flask enthusiasts interested in AI-driven web apps
+* ✅ Anime fans looking for their next watchlist  
+* ✅ Developers & data scientists exploring recommendation systems  
+* ✅ Machine learning & Flask enthusiasts interested in AI-driven web apps  
 
-## YouTube Video
+---
+
+## 📽️ Project Demo
 
 <div align="center">
-  <a href="https://www.youtube.com/embed/5" target="_blank">
-    <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/hqdefault.jpg" alt="Watch on YouTube" width="560">
-    <br>
-    Watch "Build an Content Based Anime Recommender System" on YouTube
+  <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">
+    <img src="anime_recommendation_system.png" alt="Watch Anime Recommendation System Demo" width="560">
   </a>
+  <br>
+  <strong><a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">▶️ Watch: Build a Content-Based Anime Recommender System</a></strong>
   <p>Video by Data Science Solutions</p>
 </div>
 
-**Note:** Direct embedding of YouTube videos using `<iframe>` is not supported on GitHub READMEs for security reasons. Clicking the image or text link above will take you to the video on YouTube.
+> ⚠️ GitHub does not support embedding actual YouTube videos. Clicking the image will open the video in a new tab.
+
+---
 
 ## Project Repository
 
-[Anime_Recommendation_System](https://github.com/Uvais5/Anime_Recommendation_System)
+🔗 [Anime_Recommendation_System](https://github.com/Uvais5/Anime_Recommendation_System)
 
 ---
 
@@ -75,42 +79,46 @@ To get a local copy up and running, follow these simple steps.
 
 ### Installation
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/Uvais5/Anime_Recommendation_System.git](https://github.com/Uvais5/Anime_Recommendation_System.git)
+    git clone https://github.com/Uvais5/Anime_Recommendation_System.git
     ```
-2.  **Navigate to the project directory:**
+
+2. **Navigate to the project directory:**
 
     ```bash
     cd Anime_Recommendation_System
     ```
-3.  **Create a virtual environment (recommended):**
+
+3. **Create a virtual environment (recommended):**
 
     ```bash
     python -m venv venv
     ```
-4.  **Activate the virtual environment:**
+
+4. **Activate the virtual environment:**
 
     * **Windows:**
-
         ```bash
         .\venv\Scripts\activate
         ```
     * **macOS/Linux:**
-
         ```bash
         source venv/bin/activate
         ```
-5.  **Install the required dependencies:**
+
+5. **Install the required dependencies:**
 
     ```bash
     pip install -r requirements.txt
     ```
+
+---
 
 ### Usage
 
 To run the Flask web application locally:
 
 ```bash
-python app.py # Or your main Flask application file
+python app.py
