@@ -50,7 +50,7 @@ The Anime Recommendation System is a machine learning-powered web app that helps
 ## 📽️ Project Demo
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">
+  <a href="https://youtu.be/kZP5kroO56Q?si=IAgaUtPpsjqIgkni" target="_blank">
     <img src="anime_recommendation_system.png" alt="Watch Anime Recommendation System Demo" width="560">
   </a>
   <br>
