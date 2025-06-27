@@ -58,7 +58,7 @@ This project is ideal for:
 
 <div align="center">
   <a href="https://youtu.be/kZP5kroO56Q?si=IAgaUtPpsjqIgkni" target="_blank">
-    <img src="anime_recommendation_system.png" alt="Watch Anime Recommendation System Demo" width="640">
+    <img src="thumbnail.png" alt="Watch Anime Recommendation System Demo" width="640">
   </a>
   <br>
   <strong><a href="http://www.youtube.com/watch?v=XKYLPc-wEyc" target="_blank">▶️ Watch: Build a Content-Based Anime Recommender System</a></strong>
